@@ -1,0 +1,36 @@
+.pong
+	audio(src="/sounds/hit1.mp3" type="audio/mpeg")#soundHitP1
+	audio(src="/sounds/hit2.mp3" type="audio/mpeg")#soundHitP2
+	audio(src="/sounds/loose.mp3" type="audio/mpeg")#soundLoose
+	audio(src="/sounds/background.mp3" type="audio/mpeg")#soundBackground
+	.row
+		.offset-3.col-6
+			.board#board
+				.bar.player-one-bar#player-one-bar
+				.bar.player-two-bar#player-two-bar
+				.ball#ball
+
+	.row
+		.offset-3.col-2.restart
+			h3 Buttons:
+			button(type="reset").restart-btn Restart
+
+		.offset-3.col-2.score
+			h3 Score:
+
+	.row
+		.offset-3.col-6.controls.d-flex.justify-content-center
+			h3 Controls:
+			ul
+				li
+					p Player One (bottom) controls
+					ul
+						li Right: right arrow
+						li Left: left arrow
+				li
+					p Player Two (top) controls
+					ul
+						li Right: S
+						li  Left: A
+
+script(src="/js/game.js")

@@ -1,0 +1,117 @@
+// MEDIA QUERIES
+$tablet-width: 1024px
+$phone-width: 600px
+=tablet
+	@media (max-width: $tablet-width)
+		@content
+=phone
+	@media (max-width: $phone-width)
+		@content
+=print
+	@media print
+		@content
+
+// COLORS
+// Main colors, three variations
+$main-color: #2f3031
+$sec-color: #a68ee7
+$third-color: #000000
+// Text colors, three variations
+$main-text-color: #181818
+$sec-text-color: #9b9b9b
+$third-text-color: #f0f0f0
+
+// FONTS FAMILIES
+$font-headers: 'Ubuntu', sans-serif;
+$font-text: 'Archivo', sans-serif;
+
+// FONTS-SIZES
+h1, h2, h3, h4, h5, h6, nav.menu
+    font-family: $font-headers
+    color: $main-text-color
+    font-weight: 500
+h1
+    font-size: 64px
+    @include phone
+        font-size: 32px
+h2
+    font-size: 42px
+    @include phone
+        font-size: 28px
+h3
+    font-size: 36px
+    @include phone
+        font-size: 24px
+h4
+    font-size: 32px
+    @include phone
+        font-size: 20px
+h5
+    font-size: 24px
+    @include phone
+        font-size: 18px
+h6
+    font-size: 20px
+    @include phone
+        font-size: 16px
+
+nav.menu ul li a
+    font-size: 20px
+    color: #000
+
+p, ul
+    font-size: 18px
+    font-family: $font-text
+    color: $main-text-color
+    font-weight: 300
+    @include phone
+        font-size: 16px
+
+label
+    font-family: $font-text
+    font-weight: 300
+
+// CUSTOM CLASSES
+.centered_box
+	display: inline-table
+	position: relative
+	padding: 5% 10%
+	@include phone
+		padding: 3% 5%
+	@include tablet
+		padding: 4% 10%
+	width: 100%
+	// Visual rules to make sure that boxes behave correctly, use it for testing
+	background-color: #78878bcb !important
+	border-radius: 8px 8px 8px 8px
+	// &:hover
+	// 	border: 5px solid #ff6666 !important
+	// 	background-color: #aff3ff !important
+
+.fullWidth_Box
+	display: inline-table
+	position: relative
+	width: 100%
+	// Visual rules to make sure that banners behave correctly, use it for testing
+	background-color: #9966ff !important
+	&:hover
+		border: 5px solid #c8c637 !important
+		background-color: #b294ee !important
+
+	
+// HTML TAGS
+*
+	margin: 0
+	padding:
+	box-sizing: border-box
+
+body, html
+	height: 100%
+	min-height: 100vh;
+	overflow-x: hidden
+	background-color: $main-color
+
+
+// Bootstrap Custom Classes
+.row
+	margin-bottom: 6%

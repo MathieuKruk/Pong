@@ -1,0 +1,12 @@
+.DS_Store
+.vscode
+node_modules
+package-lock.json
+db/validate/*
+db/*.json
+db/users/*
+db_backup
+db_backup2
+db.zip
+upload.zip
+db_backup.zip
