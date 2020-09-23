@@ -1,6 +1,6 @@
 h1, h2, h3, h4, h5, h6, nav.menu {
   font-family: "Ubuntu", sans-serif;
-  color: #181818;
+  color: #f8f8f8;
   font-weight: 500; }
 
 h1 {
@@ -46,7 +46,7 @@ nav.menu ul li a {
 p, ul {
   font-size: 18px;
   font-family: "Archivo", sans-serif;
-  color: #181818;
+  color: #f8f8f8;
   font-weight: 300; }
   @media (max-width: 600px) {
     p, ul {
@@ -92,25 +92,35 @@ body, html {
 .row {
   margin-bottom: 6%; }
 
-nav a.navbar-brand {
-  color: #2f3031 !important; }
-
-nav img {
-  margin-right: 1%;
-  width: 30px;
-  height: 30px; }
-
-nav .collapse ul li a.nav-link {
-  color: #2f3031 !important;
-  text-align: right; }
-
-nav .collapse ul li a.dropdown-item {
-  color: #2f3031 !important;
-  font-size: 12pt;
-  text-align: left; }
-  @media (max-width: 600px) {
-    nav .collapse ul li a.dropdown-item {
-      text-align: right; } }
+nav {
+  background-color: #2f3031 !important; }
+  nav a.navbar-brand {
+    color: #f8f8f8 !important; }
+  nav img {
+    margin-right: 1%;
+    width: 30px;
+    height: 30px; }
+  nav span {
+    margin-top: 5px;
+    color: #9b9b9b; }
+  nav .collapse ul li a.nav-link {
+    color: #f8f8f8 !important;
+    text-align: right; }
+  nav .collapse ul li a.dropdown-item {
+    color: #f8f8f8 !important;
+    font-size: 12pt;
+    text-align: left; }
+    @media (max-width: 600px) {
+      nav .collapse ul li a.dropdown-item {
+        text-align: right; } }
+  nav .collapse ul li i {
+    margin-top: 4px; }
+    @media (max-width: 600px) {
+      nav .collapse ul li i {
+        margin-top: 0px; } }
+    @media (max-width: 1024px) {
+      nav .collapse ul li i {
+        margin-top: 0px; } }
 
 .pong .board {
   position: relative;

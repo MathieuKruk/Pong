@@ -1,19 +1,29 @@
 nav
+	background-color: $main-color !important
 	a.navbar-brand
-		color: $main-color !important
+		color: $main-text-color !important
 	img
 		margin-right: 1%
 		width: 30px
 		height: 30px
+	span
+		margin-top: 5px
+		color: $sec-text-color
 	.collapse
 		ul
 			li
 				a.nav-link
-					color: $main-color !important
+					color: $main-text-color !important
 					text-align: right
 				a.dropdown-item
-					color: $main-color !important
+					color: $main-text-color !important
 					font-size: 12pt
 					text-align: left
 					@include phone
 						text-align: right
+				i
+					margin-top: 4px
+					@include phone
+						margin-top: 0px
+					@include tablet
+						margin-top: 0px
