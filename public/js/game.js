@@ -18,44 +18,48 @@ $(function () {
 		
 	// JQUERY VARIABLES - 
 	// DOM objects:
-	var board = $('#board');
-	var bar = $('.bar');
-	var playerOneBar = $('#player-one-bar');
-	var playerTwoBar = $('#player-two-bar');
-	var ball = $('#ball');
-	var restartBtn = $('#restart-btn');
+	let board = $('#board');
+	let bar = $('.bar');
+	let playerOneBar = $('#player-one-bar');
+	let playerTwoBar = $('#player-two-bar');
+	let ball = $('#ball');
+	let restartBtn = $('#restartBtn');
+	let score = {
+		playerOne:"",
+		playerTwo:""
+	}
 		
 	// Stocking dimensions into variables
-	var board_height = parseInt(board.height());
-	var board_width = parseInt(board.width());
-	var bar_width = parseInt(bar.width());
-	var ball_height= parseInt(ball.height());
-	var ball_width = parseInt(ball.width());
+	let board_height = parseInt(board.height());
+	let board_width = parseInt(board.width());
+	let bar_width = parseInt(bar.width());
+	let ball_height= parseInt(ball.height());
+	let ball_width = parseInt(ball.width());
 
 	// Stocking the center position of the bars and ball
-	var bar_center;
-	var ball_center;
+	let bar_center;
+	let ball_center;
 
 	// Stocking the Score variables
 	// When game is over, the boolean turns on 'true'
-	var game_over = false;
-	var winner = $('#winner');
-	var who_won;
+	let game_over = false;
+	let winner = $('#winner');
+	let who_won;
 
 	// Setting initial movements of the ball: vertical and diagonal
-	var ball_go = 'down';
-	var ball_right_left ='right';
+	let ball_go = 'down';
+	let ball_right_left ='right';
 	// depends on ball's movements
-	var top = 6;
-	var right_left_angle = 0;
+	let top = 6;
+	let right_left_angle = 0;
 
 	// Initialize movements on false
 	// P1
-	var move_right_p1 = false;
-	var move_left_p1 = false;
+	let move_right_p1 = false;
+	let move_left_p1 = false;
 	// P2
-	var move_right_p2 = false;
-	var move_left_p2 = false;
+	let move_right_p2 = false;
+	let move_left_p2 = false;
 
 	// COLLISION FUNCTION:
 	// Here we manage how will the ball behave when hitting obstacles.
@@ -67,18 +71,18 @@ $(function () {
 	*/
 	function collision($div1, $div2) {
 		
-		var x1 = $div1.offset().left;
-		var y1 = $div1.offset().top;
-		var h1 = $div1.outerHeight(true);
-		var w1 = $div1.outerWidth(true);
-		var b1 = y1 + h1;
-		var r1 = x1 + w1;
-		var x2 = $div2.offset().left;
-		var y2 = $div2.offset().top;
-		var h2 = $div2.outerHeight(true);
-		var w2 = $div2.outerWidth(true);
-		var b2 = y2 + h2;
-		var r2 = x2 + w2;
+		let x1 = $div1.offset().left;
+		let y1 = $div1.offset().top;
+		let h1 = $div1.outerHeight(true);
+		let w1 = $div1.outerWidth(true);
+		let b1 = y1 + h1;
+		let r1 = x1 + w1;
+		let x2 = $div2.offset().left;
+		let y2 = $div2.offset().top;
+		let h2 = $div2.outerHeight(true);
+		let w2 = $div2.outerWidth(true);
+		let b2 = y2 + h2;
+		let r2 = x2 + w2;
 		
 
 		if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
@@ -98,9 +102,9 @@ $(function () {
 			move_left_p1 = requestAnimationFrame(left_p1);
 		} else if (key === 39 && move_right_p1 === false) {
 			move_right_p1 = requestAnimationFrame(right_p1)
-		} else if (key === 65 && move_left_p2 === false) {
+		} else if (key === 81 && move_left_p2 === false) {
 			move_left_p2 = requestAnimationFrame(left_p2)
-		} else if (key === 83 && move_right_p2 === false) {
+		} else if (key === 68 && move_right_p2 === false) {
 			move_right_p2 = requestAnimationFrame(right_p2)
 		}
 	});
@@ -113,10 +117,10 @@ $(function () {
 		} else if (key === 39 ) {
 			cancelAnimationFrame(move_right_p1);
 			move_right_p1 = false;
-		} else if (key === 65 ) {
+		} else if (key === 81 ) {
 			cancelAnimationFrame(move_left_p2);
 			move_left_p2 = false;
-		} else if (key === 83 ) {
+		} else if (key === 68) {
 			cancelAnimationFrame(move_right_p2);
 			move_right_p2 = false;
 		}
@@ -166,7 +170,7 @@ $(function () {
 	}
 
 	// BALL ANIMATION FUNCTION:
-	var anim_id;
+	let anim_id;
 	anim_id = requestAnimationFrame(repeat);
 
 	function repeat() {
@@ -227,7 +231,7 @@ $(function () {
 
 	restartBtn.click(function(){
 		location.reload();
-	}) 
+	})
 
 	function ball_up() {
 		ball.css('top', parseInt(ball.css('top')) - top );

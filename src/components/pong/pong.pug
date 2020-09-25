@@ -3,37 +3,40 @@
 	audio(src="/sounds/hit2.mp3" type="audio/mpeg")#soundHitP2
 	audio(src="/sounds/loose.mp3" type="audio/mpeg")#soundLoose
 	audio(src="/sounds/background.mp3" type="audio/mpeg")#soundBackground
-	.row
-		.offset-3.col-6
+	.row.mt-2
+		.col-3.box.restart
+			h3 Buttons
+			.center
+				button#restartBtn.btn.btn-info(onclick="restart_the_game()") Restart
+		.col-6
 			.board#board
 				.bar.player-one-bar#player-one-bar
 				.bar.player-two-bar#player-two-bar
 				.ball#ball
+		.col-3.box.score
+			h3 Score
+			.center
+				table.table.table-striped.table-hover.table-dark.border
+					tr.bg-info
+						th Player 1
+						th Player 2
+					tr
+						td X
+						td X
 
-	.row
-		.offset-3.col-2.restart.border
-			h3 Buttons:
-			button(type="reset").restart-btn Restart
-
-		.offset-2.col-2.score.border
-			h3 Score:
-			ul
-				li Player 1
-				li Player 2
-
-	.row
-		.offset-3.col-6.controls.d-flex.justify-content-center.border
-			h3 Controls:
-			ul
-				li
+	.row.mt
+		.col-12.box.controls
+			h3 Controls
+			.row
+				.col-6.d-flex.justify-content-center
 					p Player One (bottom) controls
 					ul
 						li Right: right arrow
 						li Left: left arrow
-				li
+				.col-6.d-flex.justify-content-center
 					p Player Two (top) controls
 					ul
-						li Right: S
-						li  Left: A
+						li Right: D
+						li Left: Q
 
 script(src="/js/game.js")
