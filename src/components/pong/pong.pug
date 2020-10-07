@@ -3,7 +3,7 @@
 	audio(src="/sounds/hit2.mp3" type="audio/mpeg")#soundHitP2
 	audio(src="/sounds/loose.mp3" type="audio/mpeg")#soundLoose
 	audio(src="/sounds/background.mp3" type="audio/mpeg")#soundBackground
-	.row.mt-2
+	.row.mt-2.d-flex.align-items-stretch
 		.col-3.box.restart
 			h3 Buttons
 			.center
@@ -21,11 +21,11 @@
 						th Player 1
 						th Player 2
 					tr
-						td X
-						td X
+						td#playerOneScore 
+						td#playerTwoScore 
 
 	.row.mt
-		.col-12.box.controls
+		.offset-1.col-10.box.controls
 			h3 Controls
 			.row
 				.col-6.d-flex.justify-content-center

@@ -13,13 +13,11 @@ window.onload = function()
 
 // Main Self-Invoking Anonymous Function
 $(function () {
-	// Starts background song when page is launched
 	$('audio#soundBackground')[0].play();
 
 	// ###########################################################################################
 	// GLOBAL VARIABLES ##########################################################################
 	// ###########################################################################################
-	// Main variables
 	let board = $('#board');
 	let bar = $('.bar');
 	let playerOneBar = $('#player-one-bar');
@@ -126,7 +124,6 @@ $(function () {
 	- .outerHeight() returns the height of the element, including top and bottom padding, border, and optionally margin, in pixels
 	- .outerWidth() returns the width of the element, including left and right padding, border, and optionally margin, in pixels
 	*/
-	
 	function collision($div1, $div2) {
 		
 		let x1 = $div1.offset().left;
@@ -203,6 +200,7 @@ $(function () {
 			ball.css('left', parseInt(ball.css('left')) + (right_left_angle));
 		}
 	}
+
 	function ball_down() {
 		ball.css('top', parseInt(ball.css('top')) + top);
 		if (ball_right_left === 'left') {
@@ -215,76 +213,72 @@ $(function () {
 	// BALL ANIMATION FUNCTION:
 	let anim_id;
 	anim_id = requestAnimationFrame(repeat);
-	
-	// ###########################################################################################
-	// REPEAT FUNCTION  ##########################################################################
-	// ###########################################################################################
-	function repeat() {
 
-		if (game_over === false) {
 
-			if (collision(ball, playerOneBar)){
-				$('audio#soundHitP1')[0].play();
-				ball_center = parseInt(ball.css('left')) + ball_width / 2;
-				bar_center = parseInt(playerOneBar.css('left')) + bar_width / 2;
-				ball_right_left = (ball_center > bar_center ? ' right' : 'left');
-				right_left_angle = parseInt(Math.abs(bar_center - ball_center) / 6);
-				ball_go = 'up';
 
-			} else if (collision(ball, playerTwoBar)) {
-				$('audio#soundHitP2')[0].play();
-				ball_center = parseInt(ball.css('left')) + ball_width / 2;
-				bar_center = parseInt(playerTwoBar.css('left')) + bar_width / 2;
-				ball_right_left = (ball_center > bar_center ? ' right' : 'left');
-				right_left_angle = parseInt(Math.abs(bar_center - ball_center) / 6);
-				ball_go = 'down';
 
-			// Ball going RIGHT
-			} else if (parseInt(ball.css('left')) <=  0) {
-				ball_right_left = 'right';
+	function start_round(){
+		if (collision(ball, playerOneBar)){
+			$('audio#soundHitP1')[0].play();
+			ball_center = parseInt(ball.css('left')) + ball_width / 2;
+			bar_center = parseInt(playerOneBar.css('left')) + bar_width / 2;
+			ball_right_left = (ball_center > bar_center ? ' right' : 'left');
+			right_left_angle = parseInt(Math.abs(bar_center - ball_center) / 6);
+			ball_go = 'up';
 
-			// Ball going LEFT
-			} else if (parseInt(ball.css('left')) >= board_width - ball_width) {
-				ball_right_left = 'left';
+		} else if (collision(ball, playerTwoBar)) {
+			$('audio#soundHitP2')[0].play();
+			ball_center = parseInt(ball.css('left')) + ball_width / 2;
+			bar_center = parseInt(playerTwoBar.css('left')) + bar_width / 2;
+			ball_right_left = (ball_center > bar_center ? ' right' : 'left');
+			right_left_angle = parseInt(Math.abs(bar_center - ball_center) / 6);
+			ball_go = 'down';
 
-			// Ball touching UPPER Border
-			} else if (parseInt(ball.css('top')) <= 0){
-				playerOne.score ++;
-				document.getElementById("playerOneScore").innerHTML=playerOne.score;
-				stop_the_game();
+		// Ball going RIGHT
+		} else if (parseInt(ball.css('left')) <=  0) {
+			ball_right_left = 'right';
 
-			// Ball touching UPPER Border
-			} else if (parseInt(ball.css('top')) >= board_height - ball_height){
-				playerTwo.score ++;
-				document.getElementById("playerTwoScore").innerHTML=playerTwo.score;
-				stop_the_game();
-			}
+		// Ball going LEFT
+		} else if (parseInt(ball.css('left')) >= board_width - ball_width) {
+			ball_right_left = 'left';
 
-			// Ball going DOWN
-			if (ball_go === 'down'){
-			ball_down();
-			// Ball going UP
-			} else {
-				ball_up();
-			}
-			
-			// Restart the animation 
-			anim_id = requestAnimationFrame(repeat);
+		// Ball touching UPPER Border
+		} else if (parseInt(ball.css('top')) <= 0){
+			playerOne.score ++;
+			document.getElementById("playerOneScore").innerHTML=playerOne.score;
+			restart_round();
+
+		// Ball touching UPPER Border
+		} else if (parseInt(ball.css('top')) >= board_height - ball_height){
+			playerTwo.score ++;
+			document.getElementById("playerTwoScore").innerHTML=playerTwo.score;
+			restart_round();
+		}
+
+		// Ball going DOWN
+		if (ball_go === 'down'){
+		ball_down();
+		// Ball going UP
+		} else {
+			ball_up();
 		}
 	}
-
-
-	function stop_the_game() {
-		game_over = true;
-		$('audio#soundLoose')[0].play();
+	function restart_round(){
+		cancelAnimationFrame(anim_id);
+		start_round();
+	}
+	function end_session(){
 		cancelAnimationFrame(anim_id);
 	}
+	function game_session(){
+		
 
-	restartBtn.click(function(){
-		location.reload();
-	})
 
-	// ###########################################################################################
-	// BAC A SABLE MAGGLE, ON EST PAS SUR DE SE QU'ON FOU DEDANS #################################
-	// ###########################################################################################
+		if(playerOne.score || playerTwo.score < 5){
+			start_round();
+		} else if (playerOne.score || playerTwo.score === 5){
+			end_session();
+		}
+	}
+	game_session();
 });

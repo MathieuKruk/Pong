@@ -87,7 +87,7 @@ body, html {
   height: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: #2f3031; }
+  background-image: url("../images/website/bg.gif"); }
 
 .row {
   margin-bottom: 6%; }
@@ -123,8 +123,9 @@ nav {
         margin-top: 0px; } }
 
 .pong .box {
-  background-color: #442e5c;
-  padding: 3% 2%; }
+  background-color: #442e5cc2;
+  padding: 3% 2%;
+  border: 1px solid #ffcf31; }
   .pong .box h3 {
     text-align: center;
     margin-bottom: 4%; }
@@ -132,22 +133,23 @@ nav {
     display: flex;
     justify-content: center; }
 
-.pong .restart h3 {
-  margin-bottom: 15%; }
+.pong .restart {
+  border-radius: 2%; }
+  .pong .restart h3 {
+    margin-bottom: 15%; }
+  .pong .restart .btn {
+    padding: 6%; }
 
-.pong .restart .btn {
-  padding: 6%; }
-
-.pong .score h3 {
-  margin-bottom: 15%; }
-
-.pong .score table, .pong .score tbody, .pong .score tr, .pong .score th, .pong .score td {
-  padding: 2%;
-  border: 1px solid white;
-  color: #f8f8f8 !important; }
-
-.pong .score th, .pong .score td, .pong .score th {
-  text-align: center; }
+.pong .score {
+  border-radius: 2%; }
+  .pong .score h3 {
+    margin-bottom: 15%; }
+  .pong .score table, .pong .score tbody, .pong .score tr, .pong .score th, .pong .score td {
+    padding: 2%;
+    border: 1px solid white;
+    color: #f8f8f8 !important; }
+  .pong .score th, .pong .score td, .pong .score th {
+    text-align: center; }
 
 .pong .controls p, .pong .controls li {
   font-size: 22pt; }
@@ -157,13 +159,12 @@ nav {
 
 .pong .board {
   position: relative;
-  border: 3px solid black;
+  border: 1px solid #ffcf31;
   background-image: url("/images/pong/coffe.gif");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: 400px;
-  margin-top: 5%; }
+  height: 500px; }
   .pong .board .ball {
     position: absolute;
     background-color: whitesmoke;
